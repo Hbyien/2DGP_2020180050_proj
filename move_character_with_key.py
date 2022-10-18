@@ -1,5 +1,6 @@
 from pico2d import *
-
+import game_framework
+import title_state
 
 map1_WIDTH, map1_HEIGHT = 600, 600
 
@@ -14,7 +15,7 @@ def handle_events():
     for event in events:
         if event.type == SDL_QUIT:
             running = False
-        elif event.type == SDL_KEYDOWN:
+        if event.type == SDL_KEYDOWN:
             if event.key == SDLK_LEFT:
                 dir -= 1
                 bottom =80
@@ -27,6 +28,9 @@ def handle_events():
             elif event.key == SDLK_DOWN:
                 uir -=1
                 bottom=240
+            elif event.key == SDLK_SPACE:
+                bomb = load_image('bomb1.png')
+                bomb.draw(x,y)
             elif event.key == SDLK_ESCAPE:
                 running = False
         elif event.type ==SDL_KEYUP:
@@ -39,6 +43,7 @@ def handle_events():
             elif event.key == SDLK_DOWN:
                 uir+=1
     pass
+
 
 
 
@@ -60,7 +65,6 @@ bottom = 80
 
 while running:
     clear_canvas()
-
     map1_ground.draw(300, 300)
     character.clip_draw(frame * 80, bottom, 80, 80, x, y)
     update_canvas()
