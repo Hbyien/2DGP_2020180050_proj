@@ -3,7 +3,7 @@ import logo_state
 # import play_state
 start_state = logo_state
 
-pico2d.open_canvas()
+pico2d.open_canvas(800,800)
 start_state.enter()
 # play_state.enter()
 while start_state.running:

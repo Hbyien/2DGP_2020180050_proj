@@ -1,6 +1,7 @@
 from pico2d import *
 import game_framework
 import play_state
+import logo_state
 
 image = None
 
@@ -22,11 +23,13 @@ def handle_events():
         else:
             if (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
                 game_framework.change_state(play_state)
+            elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+                game_framework.change_state(logo_state)
     pass
 
 def draw():
     clear_canvas()
-    image.draw(400,300)
+    image.draw(400,400)
     update_canvas()
 
 def update():
