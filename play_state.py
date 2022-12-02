@@ -9,7 +9,7 @@ running = None
 
 class Map:
     def __init__(self):
-        self.image = load_image('map1.png')
+        self.image = load_image('map.png')
     def draw(self):
         self.image.draw(400,400)
 
@@ -28,11 +28,13 @@ class Bomb:
 
 
 class Bazzie:
+    image = None
     def __init__(self):
         self.x, self.y = 0,90
         self.frame = 0
         self.dir , self.fir= 0, 0
-        self.image = load_image('bazzie_move.png')
+        if Bazzie.image == None:
+            Bazzie.image = load_image('bazzie_move.png')
         self.bomb_ready_image=load_image('bomb_ready.png')
         self.item = None
 
